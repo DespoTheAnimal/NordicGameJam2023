@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,5 +25,11 @@ public class GameInput : MonoBehaviour
         Vector2 readValue = PlayerInput.Controls.Movement.ReadValue<Vector2>().normalized;
 
         return readValue;
+    }
+
+    public float GetRotation()
+    {
+        float rotationValue = PlayerInput.Controls.Rotation.ReadValue<float>();
+        return rotationValue;
     }
 }
