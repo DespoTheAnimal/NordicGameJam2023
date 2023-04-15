@@ -21,7 +21,7 @@ public class Rotating : MonoBehaviour
         Vector2 readValues = _GI.GetMovement();
         Vector3 inputValues = new Vector3(readValues.x, 0, readValues.y);
         
-        Quaternion rotation = Quaternion.Euler(/*inputValues.z * rotationSpeed */0, 0, inputValues.x *rotationSpeed);
+        Quaternion rotation = Quaternion.Euler(/*inputValues.z * rotationSpeed */0, 0, -inputValues.x *rotationSpeed);
         transform.rotation *= rotation;
     }
 
