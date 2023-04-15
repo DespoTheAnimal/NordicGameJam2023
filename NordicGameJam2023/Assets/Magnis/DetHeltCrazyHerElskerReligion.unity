@@ -853,6 +853,7 @@ GameObject:
   - component: {fileID: 665835696}
   - component: {fileID: 665835700}
   - component: {fileID: 665835701}
+  - component: {fileID: 665835702}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -973,6 +974,20 @@ MonoBehaviour:
   playerPositionOfTheMechanic: {fileID: 0}
   _GI: {fileID: 1898036449}
   rotationSpeed: 0
+--- !u!114 &665835702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665835695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf3d7c453a421f40b89ce21d0b4fbea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spherePrefab: {fileID: 3019770686104044862, guid: a628209c7d1d7e842bbdae3b192278b3, type: 3}
+  _planet: {fileID: 665835695}
 --- !u!1001 &748912638
 PrefabInstance:
   m_ObjectHideFlags: 0
