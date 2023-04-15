@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _RB;
 
     Vector3 readGoodValues;
+
     private void Start()
     {
         _GI = FindObjectOfType<GameInput>();
