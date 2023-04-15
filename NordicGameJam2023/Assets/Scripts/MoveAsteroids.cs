@@ -6,7 +6,7 @@ public class MoveAsteroids : MonoBehaviour
     {
         if (collision.gameObject.name == "Planet")
         {
-            collision.gameObject.GetComponent<MeteorScript>().instantiatedAsteroids.Clear();
+            
             Destroy(this.gameObject);
         }
     }
