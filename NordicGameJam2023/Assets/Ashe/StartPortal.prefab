@@ -4826,6 +4826,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4552f9b18c328f4468ea285862fa564e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hSliderValueR: 0
+  hSliderValueG: 0
+  hSliderValueB: 0
+  hSliderValueA: 1
 --- !u!65 &8308871274002836472
 BoxCollider:
   m_ObjectHideFlags: 0

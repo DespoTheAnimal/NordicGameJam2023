@@ -30,19 +30,18 @@ public class MenUI : MonoBehaviour
     [SerializeField]
     GameObject _shop;
     [SerializeField]
-    List<string> _playerList = new List<string>();
+    GameObject _startPortal;
+    [SerializeField]
+    public List<string> _playerList = new List<string>();
+    [SerializeField]
+    List<GameObject> _portalList = new List<GameObject>(); 
 
 
     void Start()
     {
         //_RandomSpawnLocation.transform.position = new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0);
-        _amountOfPlayers = 1;
+        _amountOfPlayers = 0;
         _gameStarted = false;
-
-        Instantiate(_cannon, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
-        Instantiate(_shield, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
-        Instantiate(_shop, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
-        Instantiate(_control, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
     }
 
     void Update()
@@ -63,16 +62,36 @@ public class MenUI : MonoBehaviour
 
     void AddPlayer()
     {
-        GameObject _playerPrefab = Instantiate(_player);
+        GameObject _playerPrefab = Instantiate(_player, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
         _playerPrefab.gameObject.name = "Player" + _amountOfPlayers;
         _playerList.Add(new string("Player" + _amountOfPlayers));
         _amountOfPlayers += 1;
         Debug.Log(_amountOfPlayers);
-        //Instantiate(_shield, _RandomSpawnLocation.transform.position, Quaternion.identity);
+        
+        if (_amountOfPlayers == 1)
+        {
+            Instantiate(_cannon, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
+            Instantiate(_shield, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
+            Instantiate(_shop, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
+            Instantiate(_control, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
+            _portalList[0].SetActive(true);
+
+        }
+
+        if (_amountOfPlayers == 2)
+        {
+            _portalList[1].SetActive(true);
+        }   
+        
+        if (_amountOfPlayers == 3)
+        {
+            _portalList[2].SetActive(true);
+        }
 
         if (_amountOfPlayers == 4)
         {
             Instantiate(_cannon, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
+            _portalList[3].SetActive(true);
         }
     }
 
