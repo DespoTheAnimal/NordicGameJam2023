@@ -28,13 +28,4 @@ public class GameInput : MonoBehaviour
 
         return readValue;
     }
-
-    public float GetRotation()
-    {
-        float rotationValue = PlayerInput.Controls.Rotation.ReadValue<float>();
-        return rotationValue;
-    }
-
-
-
 }

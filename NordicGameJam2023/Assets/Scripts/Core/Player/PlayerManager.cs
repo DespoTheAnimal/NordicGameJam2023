@@ -26,9 +26,10 @@ public class PlayerManager : MonoBehaviour
         playerInputManager.onPlayerLeft -= AddPlayer;
     }
 
-    private void AddPlayer(PlayerInput player)
+    public void AddPlayer(PlayerInput player)
     {
         players.Add(player);
         player.transform.SetParent(planet);
+        player.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
     }
 }

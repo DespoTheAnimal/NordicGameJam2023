@@ -6,11 +6,13 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     PlayerEnterAndExitMechanic playerEnterAndExitMechanic;
-    /*[SerializeField]*/ GameInput _GI;
+    GameInput _GI;
 
     public bool playerMovementEnabled = true;
 
     private Rigidbody _RB;
+
+    Vector3 readGoodValues;
     private void Start()
     {
         _GI = FindObjectOfType<GameInput>();
@@ -18,15 +20,20 @@ public class PlayerController : MonoBehaviour
         playerEnterAndExitMechanic = GetComponent<PlayerEnterAndExitMechanic>();
     }
 
+    public void OnMove(InputAction.CallbackContext ctx)
+    {
+        readGoodValues = ctx.ReadValue<Vector2>();
+        readGoodValues.y = 0;
+        readGoodValues.z = 0;
+    }
+
+
+
     private void HandleMovement()
     {
-        Vector2 readValues = _GI.GetMovement();
-        Vector3 inputValues = new Vector3(readValues.x, 0, 0);
-
         int speedModifier = 5;
 
-
-        _RB.MovePosition(transform.position + transform.TransformDirection(inputValues * speedModifier * Time.deltaTime));
+        _RB.MovePosition(transform.position + transform.TransformDirection(readGoodValues * speedModifier * Time.deltaTime));
     }
 
     // Update is called once per frame
