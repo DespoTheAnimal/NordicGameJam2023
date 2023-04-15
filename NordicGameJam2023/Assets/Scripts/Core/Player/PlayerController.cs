@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 
     public bool playerMovementEnabled = true;
 
+    [SerializeField] bool isPlayerOne;
+
     private Rigidbody _RB;
 
     Vector3 readGoodValues;
@@ -20,34 +22,47 @@ public class PlayerController : MonoBehaviour
         playerEnterAndExitMechanic = GetComponent<PlayerEnterAndExitMechanic>();
     }
 
-    public void OnMove(InputAction.CallbackContext ctx)
-    {
-        readGoodValues = ctx.ReadValue<Vector2>();
-        readGoodValues.y = 0;
-        readGoodValues.z = 0;
-    }
 
+    //private void HandleInteraction()
+    //{
+    //    if (isPlayerOne)
+    //    {
+    //        float x = Input.GetAxis("Horizontal_P1");
+    //        readGoodValues = new Vector3(x, 0, 0);
+    //    }
+    //    else
+    //    {
+    //        float x = Input.GetAxis("Horizontal_P2");
+    //        readGoodValues = new Vector3(x, 0, 0);
+    //    }
 
+    //    //EnterExit_P1
+    //}
 
     private void HandleMovement()
     {
+        if (isPlayerOne)
+        {
+            float x = Input.GetAxis("Horizontal_P1");
+            readGoodValues = new Vector3(x, 0, 0);
+        }
+        else
+        {
+            float x = Input.GetAxis("Horizontal_P2");
+            readGoodValues = new Vector3(x, 0, 0);
+        }
+
+        
+
         int speedModifier = 5;
 
         _RB.MovePosition(transform.position + transform.TransformDirection(readGoodValues * speedModifier * Time.deltaTime));
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        if(playerMovementEnabled)
-            HandleMovement();
+        HandleMovement();
     }
 
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    if(other.name == "canon")
-    //    {
 
-    //    }
-    //}
 }
