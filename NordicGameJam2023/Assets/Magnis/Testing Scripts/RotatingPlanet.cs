@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class RotatingPlanet : MonoBehaviour
 {
+    public int control;
+    public GameObject player;
+
     [SerializeField] GameInput _GI;
+
+    public float rotationSpeed;
 
     //public GameObject anchor;
 
@@ -19,21 +24,18 @@ public class RotatingPlanet : MonoBehaviour
         Vector2 readValues = _GI.GetMovement();
         Vector3 inputValues = new Vector3(readValues.x, 0, readValues.y);
 
-        /*Quaternion rotation = Quaternion.Euler(inputValues.z, 0, -inputValues.x);
-        transform.rotation *= rotation;*/
 
-        if (_GI.GetRotation() == 1)
+        if (control == 1)
         {
-
-            Quaternion rotation = Quaternion.Euler(0, 0, -1);
+            Quaternion rotation = Quaternion.Euler(inputValues.z * rotationSpeed, 0, 0/*inputValues.x *rotationSpeed*/);
             transform.rotation *= rotation;
         }
-        else if (_GI.GetRotation() == -1)
+        else if(control == 2)
         {
-
-            Quaternion rotation = Quaternion.Euler(0, 0, 1);
+            Quaternion rotation = Quaternion.Euler(0, 0, inputValues.x *rotationSpeed);
             transform.rotation *= rotation;
         }
+ 
     }
 
     // Update is called once per frame
