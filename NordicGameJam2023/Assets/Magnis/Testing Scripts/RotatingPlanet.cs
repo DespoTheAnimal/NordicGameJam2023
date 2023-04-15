@@ -25,14 +25,14 @@ public class RotatingPlanet : MonoBehaviour
         Vector3 inputValues = new Vector3(readValues.x, 0, readValues.y);
 
 
-        if (control == 1)
+        if (_GI.GetRotation() == 1)
         {
-            Quaternion rotation = Quaternion.Euler(inputValues.z * rotationSpeed, 0, 0/*inputValues.x *rotationSpeed*/);
+            Quaternion rotation = Quaternion.Euler(0,0, -1);
             transform.rotation *= rotation;
         }
-        else if(control == 2)
+        else if(_GI.GetRotation() == -1)
         {
-            Quaternion rotation = Quaternion.Euler(0, 0, inputValues.x *rotationSpeed);
+            Quaternion rotation = Quaternion.Euler(0, 0, 1);
             transform.rotation *= rotation;
         }
  
