@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+
 
 public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] GameInput _GI;
-
-    public int speedModifier = 0;
 
     private Rigidbody _RB;
     private void Start()
@@ -19,7 +17,9 @@ public class PlayerController : MonoBehaviour
     private void HandleMovement()
     {
         Vector2 readValues = _GI.GetMovement();
-        Vector3 inputValues = new Vector3(readValues.x, 0, readValues.y);
+        Vector3 inputValues = new Vector3(readValues.x, 0, 0);
+
+        int speedModifier = 5;
 
 
         _RB.MovePosition(transform.position + transform.TransformDirection(inputValues * speedModifier * Time.deltaTime));
