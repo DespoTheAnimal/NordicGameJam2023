@@ -7,7 +7,9 @@ using UnityEngine.InputSystem;
 
 public class GameInput : MonoBehaviour
 {
-    PlayerInputMap PlayerInput;
+    public PlayerInputMap PlayerInput;
+
+
 
 
     private void Awake()
@@ -32,4 +34,7 @@ public class GameInput : MonoBehaviour
         float rotationValue = PlayerInput.Controls.Rotation.ReadValue<float>();
         return rotationValue;
     }
+
+
+
 }
