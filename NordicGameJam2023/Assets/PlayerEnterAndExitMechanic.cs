@@ -5,23 +5,24 @@ using UnityEngine.InputSystem;
 
 public class PlayerEnterAndExitMechanic : MonoBehaviour
 {
-    //public enum MechanicState { 
-    //    Player, 
-    //    Canon,
-    //    PlanetRotate,
-    //}
+    public enum MechanicState
+    {
+        Player,
+        Canon,
+        PlanetRotate,
+    }
 
-    //public MechanicState mechanicState;
+    public MechanicState mechanicState;
 
-    //PlayerController playeController;
-    //CanonShoot canonShoot;
-    //RotatingPlanet rotatingPlanet;
+    PlayerController playeController;
+    CanonShoot canonShoot;
+    RotatingPlanet rotatingPlanet;
 
     //private GameInput gameInput;
 
     string mechanicTypeInCollider;
 
-    //bool hasEntered = false;
+    bool hasEntered = false;
 
     [SerializeField] private bool isPlayerOne;
 
@@ -31,141 +32,129 @@ public class PlayerEnterAndExitMechanic : MonoBehaviour
 
 
 
-    //public bool rotateEnabled = false;
+    public bool rotateEnabled = false;
 
-    //private Transform planet;
-    //public Transform playerPositionOfTheMechanic;
+    [SerializeField] private Transform planet;
+    public Transform playerPositionOfTheMechanic;
 
     //[SerializeField] GameInput _GI;
 
-    //private void RotatePlanet()
-    //{
+    private void RotatePlanet()
+    {
+        float x;
 
-    //    Vector2 readValues = _GI.GetMovement();
-    //    Vector3 inputValues = new Vector3(readValues.x, 0, 0);
+        if (isPlayerOne)
+        {
+            x = Input.GetAxis("Horizontal_P1");
+        }
+        else
+        {
+            x = Input.GetAxis("Horizontal_P2");
+        }
 
-    //    //Debug.Log(inputValues);
-
-
-    //    if (inputValues.x >= .95f)
-    //    {
-    //        Quaternion rotation = Quaternion.Euler(0, 0, -1);
-    //        planet.rotation *= rotation;
-    //    }
-    //    else if (inputValues.x <= -.95f)
-    //    {
-    //        Quaternion rotation = Quaternion.Euler(0, 0, 1);
-    //        planet.rotation *= rotation;
-    //    }
-
-    //}
+        Debug.Log(x);
 
 
+        if (x >= .95f)
+        {
+            Quaternion rotation = Quaternion.Euler(0, 0, -1 * planetRotationSpeed * Time.deltaTime);
+            planet.rotation *= rotation;
+        }
+        else if (x <= -.95f)
+        {
+            Quaternion rotation = Quaternion.Euler(0, 0, 1 * planetRotationSpeed * Time.deltaTime);
+            planet.rotation *= rotation;
+        }
+
+    }
+
+    [SerializeField] private float planetRotationSpeed = 0.3f;
 
     private void Awake()
     {
-        //playeController = FindObjectOfType<PlayerController>();
-        //canonShoot = FindObjectOfType<CanonShoot>();
-        //rotatingPlanet = FindObjectOfType<RotatingPlanet>();
-        //planet = FindObjectOfType<FauxGravityAttractor>().gameObject.transform;
-        //playerPositionOfTheMechanic = GameObject.FindGameObjectWithTag("PlanetRotateChild").transform;
-        //_GI = FindObjectOfType<GameInput>();
+        playeController = GetComponent<PlayerController>();
+        canonShoot = FindObjectOfType<CanonShoot>();
+        rotatingPlanet = FindObjectOfType<RotatingPlanet>();
+        planet = FindObjectOfType<FauxGravityAttractor>().gameObject.transform;
+        playerPositionOfTheMechanic = GameObject.FindGameObjectWithTag("PlanetRotateChild").transform;
     }
 
     private void Start()
     {
-        //mechanicState = MechanicState.Player;
-        //gameInput = FindObjectOfType<GameInput>();
-        //gameInput.PlayerInput.Controls.EnterExit.performed += EnterExit_performed;
+        mechanicState = MechanicState.Player;
     }
-
-    //bool test;
-
-    
-
-    //public void EnterExit_performed(InputAction.CallbackContext ctx)
-    //{
-    //    test = ctx.ReadValueAsButton();
-
-    //    if(test)
-    //    {
-    //        if (canEnter)
-    //        {
-    //            if (mechanicTypeInCollider == "canon" && !hasEntered)
-    //            {
-    //                playeController.playerMovementEnabled = false;
-    //                playeController.transform.position = canonShoot.playerPositionOfTheMechanic.position;
-
-    //                canonShoot.EnableCanon(true);
-    //                // enable canon
-    //                hasEntered = true;
-    //                mechanicState = MechanicState.Canon;
-    //            }
-    //            else if (mechanicTypeInCollider == "PlanetRotator" && !hasEntered)
-    //            {
-    //                playeController.playerMovementEnabled = false;
-    //                playeController.transform.position = rotatingPlanet.playerPositionOfTheMechanic.position;
-
-    //                rotatingPlanet.rotateEnabled = true;
-
-    //                mechanicState = MechanicState.PlanetRotate;
-    //                hasEntered = true;
-    //            }
-    //            else if (hasEntered)
-    //            {
-    //                canonShoot.EnableCanon(false);
-    //                rotatingPlanet.rotateEnabled = false;
-
-    //                playeController.playerMovementEnabled = true;
-
-    //                mechanicState = MechanicState.Player;
-    //                hasEntered = false;
-    //            }
-
-    //        }
-    //    }
-    //}
-
-
-
 
     private void Update()
     {
-        if(isPlayerOne)
-        {
-            if (Input.GetButtonDown("EnterExit_P1"))
-            {
+        if (rotateEnabled)
+            RotatePlanet();
 
-                Debug.Log("EnterExit_P1");
+        if(Input.GetButtonDown("EnterExit_P1"))
+        {
+            if (mechanicTypeInCollider == "canon" && !hasEntered)
+            {
+                playeController.playerMovementEnabled = false;
+                //playeController.transform.position = canonShoot.playerPositionOfTheMechanic.position;
+
+                canonShoot.EnableCanon(true, true);
+                // enable canon
+                hasEntered = true;
+                mechanicState = MechanicState.Canon;
+            }
+            else if (mechanicTypeInCollider == "PlanetRotator" && !hasEntered)
+            {
+                playeController.playerMovementEnabled = false;
+                //playeController.transform.position = rotatingPlanet.playerPositionOfTheMechanic.position;
+
+                rotateEnabled = true;
+
+                mechanicState = MechanicState.PlanetRotate;
+                hasEntered = true;
+            }
+            else if (hasEntered)
+            {
+                canonShoot.EnableCanon(false, true);
+                rotateEnabled = false;
+
+                playeController.playerMovementEnabled = true;
+
+                mechanicState = MechanicState.Player;
+                hasEntered = false;
             }
         }
-        else
+        else if (Input.GetButtonDown("EnterExit_P2"))
         {
-            if (Input.GetButtonDown("EnterExit_P2"))
+            if (mechanicTypeInCollider == "canon" && !hasEntered)
             {
+                playeController.playerMovementEnabled = false;
+                //playeController.transform.position = canonShoot.playerPositionOfTheMechanic.position;
 
-                Debug.Log("EnterExit_P2");
+                canonShoot.EnableCanon(true, false);
+                // enable canon
+                hasEntered = true;
+                mechanicState = MechanicState.Canon;
+            }
+            else if (mechanicTypeInCollider == "PlanetRotator" && !hasEntered)
+            {
+                playeController.playerMovementEnabled = false;
+                //playeController.transform.position = rotatingPlanet.playerPositionOfTheMechanic.position;
+
+                rotateEnabled = true;
+
+                mechanicState = MechanicState.PlanetRotate;
+                hasEntered = true;
+            }
+            else if (hasEntered)
+            {
+                canonShoot.EnableCanon(false, false);
+                rotateEnabled = false;
+
+                playeController.playerMovementEnabled = true;
+
+                mechanicState = MechanicState.Player;
+                hasEntered = false;
             }
         }
-        
-
-
-        //if (rotateEnabled)
-        //    RotatePlanet();
-
-
-        //if(mechanicState == MechanicState.Canon || mechanicState == MechanicState.PlanetRotate)
-        //{
-        //    if(Input.GetKeyDown(KeyCode.I))
-        //    {
-        //        canonShoot.EnableCanon(false);
-        //        rotatingPlanet.rotateEnabled = false;
-
-        //        playeController.playerMovementEnabled = true;
-
-        //        mechanicState = MechanicState.Player;
-        //    }
-        //}
     }
     
 
