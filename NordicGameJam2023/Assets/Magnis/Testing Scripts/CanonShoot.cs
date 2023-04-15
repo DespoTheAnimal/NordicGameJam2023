@@ -26,28 +26,70 @@ public class CanonShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetButtonDown("Shoot_P1") && p1)
+        {
+            if (isShooting == false)
+            {
+                StartCoroutine(ShootDelay());
+            }
+        }
+
+        if (Input.GetButtonDown("Shoot_P2") && p2)
+        {
+            if (isShooting == false)
+            {
+                StartCoroutine(ShootDelay());
+            }
+        }
     }
 
-    public void EnableCanon(bool state)
+    private bool p1 = false;
+    private bool p2 = false;
+
+
+    public void EnableCanon(bool state, bool isPlayerOne)
     {
         if(state)
         {
-            gameInput.PlayerInput.Controls.Shoot.performed += GameInput_Shoot;
+            if(isPlayerOne)
+            {
+                p1 = true;
+                p2 = false;
+            }
+            else
+            {
+                p1 = false;
+                p2 = true;
+            }
         }
         else
         {
-            gameInput.PlayerInput.Controls.Shoot.performed -= GameInput_Shoot;
+            p1 = false;
+            p2 = false;
         }
+
+        //if(state)
+        //{
+        //    gameInput.PlayerInput.Controls.Shoot.performed += GameInput_Shoot;
+        //}
+        //else
+        //{
+        //    gameInput.PlayerInput.Controls.Shoot.performed -= GameInput_Shoot;
+        //}
+
+        //if (isPlayerOne)
+        //{
+        //    float x = Input.GetAxis("Horizontal_P1");
+        //    readGoodValues = new Vector3(x, 0, 0);
+        //}
+        //else
+        //{
+        //    float x = Input.GetAxis("Horizontal_P2");
+        //    readGoodValues = new Vector3(x, 0, 0);
+        //}
     }
 
-    void GameInput_Shoot(InputAction.CallbackContext callback)
-    {
-        if (isShooting == false)
-        {
-            StartCoroutine(ShootDelay());
-        }
-    }
+
 
     private IEnumerator ShootDelay()
     {

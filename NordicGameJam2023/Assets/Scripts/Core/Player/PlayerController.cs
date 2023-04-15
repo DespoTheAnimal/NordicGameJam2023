@@ -62,7 +62,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        HandleMovement();
+        if(playerMovementEnabled)
+            HandleMovement();
     }
 
 

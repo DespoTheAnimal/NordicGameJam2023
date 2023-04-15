@@ -285,6 +285,8 @@ Transform:
   m_Children:
   - {fileID: 7008703005974770825}
   - {fileID: 1080089175}
+  - {fileID: 1396613452179019366}
+  - {fileID: 1153198149}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -410,6 +412,7 @@ GameObject:
   - component: {fileID: 1080089178}
   - component: {fileID: 1080089177}
   - component: {fileID: 1080089180}
+  - component: {fileID: 1080089181}
   m_Layer: 0
   m_Name: PlanetRotator
   m_TagString: Mechanic
@@ -509,6 +512,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherCollider: 
+--- !u!114 &1080089181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080089174}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3875e336ebb184c83509bc5d30aec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateEnabled: 0
+  control: 0
+  player: {fileID: 0}
+  planet: {fileID: 0}
+  playerPositionOfTheMechanic: {fileID: 1381397671}
+  _GI: {fileID: 0}
+  rotationSpeed: 0
 --- !u!1 &1153198141
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,8 +566,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0ec589b9ef1d34e8b6c34eac6dab2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mechanicState: 0
   isPlayerOne: 0
   canEnter: 0
+  rotateEnabled: 0
+  planet: {fileID: 665835699}
+  playerPositionOfTheMechanic: {fileID: 1381397671}
+  planetRotationSpeed: 50
 --- !u!54 &1153198143
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -660,13 +687,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153198141}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.03, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.094, y: 0.606, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 665835699}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1374186737
 GameObject:
@@ -4094,13 +4121,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1396613452179019292}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.03, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.132, y: 0.606, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 665835699}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1396613452179019367
 MeshFilter:
@@ -4285,8 +4312,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0ec589b9ef1d34e8b6c34eac6dab2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mechanicState: 0
   isPlayerOne: 1
   canEnter: 0
+  rotateEnabled: 0
+  planet: {fileID: 665835699}
+  playerPositionOfTheMechanic: {fileID: 1381397671}
+  planetRotationSpeed: 50
 --- !u!4 &7008703005974770825
 Transform:
   m_ObjectHideFlags: 0
