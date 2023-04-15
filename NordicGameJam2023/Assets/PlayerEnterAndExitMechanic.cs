@@ -104,7 +104,7 @@ public class PlayerEnterAndExitMechanic : MonoBehaviour
         }
     }
 
-    private GameObject OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Mechanic")
         {
@@ -113,19 +113,16 @@ public class PlayerEnterAndExitMechanic : MonoBehaviour
             if (other.name == "canon")
             {
                 mechanicTypeInCollider = "canon";
-                return gameObject;
             }
             else if(other.name == "PlanetRotator")
             {
                 mechanicTypeInCollider = "PlanetRotator";
-                return gameObject;
             }
         }
         else
         {
             canEnter = false;
             mechanicTypeInCollider = "";
-            return null;
         }
     }
 
