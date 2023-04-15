@@ -125,7 +125,7 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""ff526c9c-d526-429e-8828-5b98168fd054"",
-                    ""path"": ""<Joystick>/stick/up"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
@@ -136,7 +136,7 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""33570fcd-bbb8-488c-9479-73a66db5d2b6"",
-                    ""path"": ""<Joystick>/stick/down"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
@@ -147,7 +147,7 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""b024c168-4250-4f52-8b26-37532ce217a6"",
-                    ""path"": ""<Joystick>/stick/left"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
@@ -158,7 +158,7 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""d47a638c-f122-4865-8c32-0e5f1a5664a8"",
-                    ""path"": ""<Joystick>/stick/right"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
@@ -180,7 +180,7 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""ade1578b-cd33-4373-a286-e9363a6bf008"",
-                    ""path"": ""<HID::USB gamepad           >/button5"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -191,7 +191,7 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""7e737348-a406-4e4d-beb1-40f7118c4e49"",
-                    ""path"": ""<HID::USB gamepad           >/button6"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -202,7 +202,7 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5bf07220-c927-4e9e-86cd-3a2d99080ac9"",
-                    ""path"": ""<HID::USB gamepad           >/button4"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
