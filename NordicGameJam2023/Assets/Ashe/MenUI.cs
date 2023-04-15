@@ -7,6 +7,7 @@ using TMPro;
 public class MenUI : MonoBehaviour
 {
     int _amountOfPlayers;
+    bool _gameStarted;
     //Transform _RandomSpawnLocation;
     [SerializeField]
     float minXRange;
@@ -29,25 +30,29 @@ public class MenUI : MonoBehaviour
     [SerializeField]
     GameObject _shop;
 
-    // Start is called before the first frame update
     void Awake()
     {
         //_RandomSpawnLocation.transform.position = new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0);
         _amountOfPlayers = 0;
+        _gameStarted = false;
         Instantiate(_cannon, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
-        Debug.Log("Cannon spawned in Awake.");
         Instantiate(_shield, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
-        Debug.Log("Shield spawned in Awake.");
         Instantiate(_shop, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
         Instantiate(_control, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (_gameStarted == false)
         {
-            AddPlayer();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                AddPlayer();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            StartGame();
         }
     }
 
@@ -65,5 +70,11 @@ public class MenUI : MonoBehaviour
             Instantiate(_cannon, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
             Debug.Log("Cannon spawned in AddPlayer.");
         }
+    }
+
+    void StartGame()
+    {
+        _startMenu.SetActive(false);
+        _gameStarted = true;
     }
 }

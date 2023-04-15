@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    PlayerEnterAndExitMechanic playerEnterAndExitMechanic;
     [SerializeField] GameInput _GI;
+
+    public bool playerMovementEnabled = true;
 
     private Rigidbody _RB;
     private void Start()
     {
         _RB = GetComponent<Rigidbody>();
+        playerEnterAndExitMechanic = GetComponent<PlayerEnterAndExitMechanic>();
     }
 
     private void HandleMovement()
@@ -28,6 +31,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        HandleMovement();
+        if(playerMovementEnabled)
+            HandleMovement();
     }
+
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if(other.name == "canon")
+    //    {
+
+    //    }
+    //}
 }

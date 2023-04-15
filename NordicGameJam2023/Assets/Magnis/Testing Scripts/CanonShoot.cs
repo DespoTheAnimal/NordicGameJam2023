@@ -6,9 +6,10 @@ using UnityEngine.InputSystem;
 
 public class CanonShoot : MonoBehaviour
 {
-
+    public bool canonEnabled = false;
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject shootFrom;
+    public Transform playerPositionOfTheMechanic;
 
     [SerializeField] private GameInput gameInput;
 
@@ -19,13 +20,25 @@ public class CanonShoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameInput.PlayerInput.Controls.Shoot.performed += GameInput_Shoot;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void EnableCanon(bool state)
+    {
+        if(state)
+        {
+            gameInput.PlayerInput.Controls.Shoot.performed += GameInput_Shoot;
+        }
+        else
+        {
+            gameInput.PlayerInput.Controls.Shoot.performed -= GameInput_Shoot;
+        }
     }
 
     void GameInput_Shoot(InputAction.CallbackContext callback)
