@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,8 @@ public class CanonShoot : MonoBehaviour
 
     public int projectileSpeed = 10;
     public int destroyProjectileTime = 2;
+    public float shotDelay = 2;
+    private bool isShooting = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +28,23 @@ public class CanonShoot : MonoBehaviour
         
     }
 
-    private void ShootProjectile()
+    void GameInput_Shoot(InputAction.CallbackContext callback)
+    {
+        if (isShooting == false)
+        {
+            StartCoroutine(ShootDelay());
+        }
+    }
+
+    private IEnumerator ShootDelay()
+    {
+        isShooting = true;
+        Shoot();
+        yield return new WaitForSeconds(shotDelay);
+        isShooting = false;
+    }
+
+    private void Shoot()
     {
         GameObject temporaryBulletHandler;
         temporaryBulletHandler = Instantiate(bullet, shootFrom.transform.position, shootFrom.transform.rotation) as GameObject;
@@ -36,10 +55,5 @@ public class CanonShoot : MonoBehaviour
         temporaryRB.AddForce(transform.right * projectileSpeed);
 
         Destroy(temporaryBulletHandler, destroyProjectileTime);
-    }
-
-    void GameInput_Shoot(InputAction.CallbackContext callback)
-    {
-        ShootProjectile();
     }
 }
