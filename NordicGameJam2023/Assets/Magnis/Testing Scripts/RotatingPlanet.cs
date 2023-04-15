@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class RotatingPlanet : MonoBehaviour
 {
+    public bool rotateEnabled = false;
     public int control;
     public GameObject player;
+
+    [SerializeField] private Transform planet;
+    public Transform playerPositionOfTheMechanic;
 
     [SerializeField] GameInput _GI;
 
@@ -22,18 +26,17 @@ public class RotatingPlanet : MonoBehaviour
     private void RotatePlanet()
     {
         Vector2 readValues = _GI.GetMovement();
-        Vector3 inputValues = new Vector3(readValues.x, 0, readValues.y);
+        Vector3 inputValues = new Vector3(readValues.x, 0, 0);
 
-
-        if (_GI.GetRotation() == 1)
+        if (inputValues.x == 1)
         {
             Quaternion rotation = Quaternion.Euler(0,0, -1);
-            transform.rotation *= rotation;
+            planet.rotation *= rotation;
         }
-        else if(_GI.GetRotation() == -1)
+        else if(inputValues.x == -1)
         {
             Quaternion rotation = Quaternion.Euler(0, 0, 1);
-            transform.rotation *= rotation;
+            planet.rotation *= rotation;
         }
  
     }
@@ -41,6 +44,7 @@ public class RotatingPlanet : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        RotatePlanet();
+        if(rotateEnabled)
+            RotatePlanet();
     }
 }
