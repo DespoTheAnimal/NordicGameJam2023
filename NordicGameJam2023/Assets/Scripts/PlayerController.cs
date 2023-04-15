@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     PlayerEnterAndExitMechanic playerEnterAndExitMechanic;
-    [SerializeField] GameInput _GI;
+    /*[SerializeField]*/ GameInput _GI;
 
     public bool playerMovementEnabled = true;
 
     private Rigidbody _RB;
     private void Start()
     {
+        _GI = FindObjectOfType<GameInput>();
         _RB = GetComponent<Rigidbody>();
         playerEnterAndExitMechanic = GetComponent<PlayerEnterAndExitMechanic>();
     }

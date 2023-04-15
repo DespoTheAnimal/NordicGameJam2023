@@ -10,6 +10,7 @@ public class FauxGravityBody : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        attractor = FindObjectOfType<FauxGravityAttractor>();
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         GetComponent<Rigidbody>().useGravity = false;
         attractor = FindObjectOfType<FauxGravityAttractor>();
