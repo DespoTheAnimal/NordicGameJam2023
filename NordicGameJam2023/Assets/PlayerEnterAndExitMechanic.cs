@@ -39,52 +39,52 @@ public class PlayerEnterAndExitMechanic : MonoBehaviour
         gameInput.PlayerInput.Controls.EnterExit.performed += EnterExit_performed;
     }
 
-  
+    bool test;
 
     public void EnterExit_performed(InputAction.CallbackContext ctx)
     {
-
-        if (ctx.ReadValueAsButton())
+        test = ctx.ReadValueAsButton();
+       
+        if(test)
         {
-            Debug.Log(this.gameObject.name);
+            if (canEnter)
+            {
+                if (mechanicTypeInCollider == "canon" && !hasEntered)
+                {
+                    Debug.Log("canon");
+                    playeController.playerMovementEnabled = false;
+                    playeController.transform.position = canonShoot.playerPositionOfTheMechanic.position;
+
+                    canonShoot.EnableCanon(true);
+                    // enable canon
+                    hasEntered = true;
+                    mechanicState = MechanicState.Canon;
+                }
+                else if (mechanicTypeInCollider == "PlanetRotator" && !hasEntered)
+                {
+                    Debug.Log("PlanetRotator");
+                    playeController.playerMovementEnabled = false;
+                    playeController.transform.position = rotatingPlanet.playerPositionOfTheMechanic.position;
+
+                    rotatingPlanet.rotateEnabled = true;
+
+                    mechanicState = MechanicState.PlanetRotate;
+                    hasEntered = true;
+                }
+                else if (hasEntered)
+                {
+                    canonShoot.EnableCanon(false);
+                    rotatingPlanet.rotateEnabled = false;
+
+                    playeController.playerMovementEnabled = true;
+
+                    mechanicState = MechanicState.Player;
+                    hasEntered = false;
+                }
+
+            }
         }
-
-        if (canEnter)
-        {
-            if (mechanicTypeInCollider == "canon" && !hasEntered)
-            {
-                Debug.Log("canon");
-                playeController.playerMovementEnabled = false;
-                playeController.transform.position = canonShoot.playerPositionOfTheMechanic.position;
-
-                canonShoot.EnableCanon(true);
-                // enable canon
-                hasEntered = true;
-                mechanicState = MechanicState.Canon;
-            }
-            else if (mechanicTypeInCollider == "PlanetRotator" && !hasEntered)
-            {
-                Debug.Log("PlanetRotator");
-                playeController.playerMovementEnabled = false;
-                playeController.transform.position = rotatingPlanet.playerPositionOfTheMechanic.position;
-
-                rotatingPlanet.rotateEnabled = true;
-
-                mechanicState = MechanicState.PlanetRotate;
-                hasEntered = true; 
-            }
-            else if (hasEntered)
-            {
-                canonShoot.EnableCanon(false);
-                rotatingPlanet.rotateEnabled = false;
-
-                playeController.playerMovementEnabled = true;
-
-                mechanicState = MechanicState.Player;
-                hasEntered = false;
-            }
-
-        }
+        
     }
 
 
@@ -104,7 +104,7 @@ public class PlayerEnterAndExitMechanic : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private GameObject OnTriggerStay(Collider other)
     {
         if (other.tag == "Mechanic")
         {
@@ -113,16 +113,19 @@ public class PlayerEnterAndExitMechanic : MonoBehaviour
             if (other.name == "canon")
             {
                 mechanicTypeInCollider = "canon";
+                return gameObject;
             }
             else if(other.name == "PlanetRotator")
             {
                 mechanicTypeInCollider = "PlanetRotator";
+                return gameObject;
             }
         }
         else
         {
             canEnter = false;
             mechanicTypeInCollider = "";
+            return null;
         }
     }
 
