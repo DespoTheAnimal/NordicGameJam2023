@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Rotating : MonoBehaviour
 {
-    public int control;
-    public GameObject player;
-
     [SerializeField] GameInput _GI;
 
     public float rotationSpeed;
@@ -23,20 +20,9 @@ public class Rotating : MonoBehaviour
     {
         Vector2 readValues = _GI.GetMovement();
         Vector3 inputValues = new Vector3(readValues.x, 0, readValues.y);
-
-
-
-        if (control == 1)
-        {
-            Quaternion rotation = Quaternion.Euler(inputValues.z * rotationSpeed, 0, 0/*inputValues.x *rotationSpeed*/);
-            transform.rotation *= rotation;
-        }
-        else if(control == 2)
-        {
-            Quaternion rotation = Quaternion.Euler(0, 0, inputValues.x *rotationSpeed);
-            transform.rotation *= rotation;
-        }
- 
+        
+        Quaternion rotation = Quaternion.Euler(/*inputValues.z * rotationSpeed */0, 0, inputValues.x *rotationSpeed);
+        transform.rotation *= rotation;
     }
 
     // Update is called once per frame
