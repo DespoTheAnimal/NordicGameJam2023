@@ -53,6 +53,15 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Join"",
+                    ""type"": ""Button"",
+                    ""id"": ""6058a3d3-b634-4aa3-9b23-1eb9274782a8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -242,6 +251,28 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74987c00-5db1-4fee-9e2d-8de97c35e410"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Join"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7a5f816b-7ffc-43be-af04-f652d78887c0"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Join"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -250,12 +281,24 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
         {
             ""name"": ""Keyboard"",
             ""bindingGroup"": ""Keyboard"",
-            ""devices"": []
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         },
         {
             ""name"": ""Controller"",
             ""bindingGroup"": ""Controller"",
-            ""devices"": []
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": true,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
@@ -264,6 +307,7 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
         m_Controls_Movement = m_Controls.FindAction("Movement", throwIfNotFound: true);
         m_Controls_Rotation = m_Controls.FindAction("Rotation", throwIfNotFound: true);
         m_Controls_Shoot = m_Controls.FindAction("Shoot", throwIfNotFound: true);
+        m_Controls_Join = m_Controls.FindAction("Join", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -326,6 +370,7 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
     private readonly InputAction m_Controls_Movement;
     private readonly InputAction m_Controls_Rotation;
     private readonly InputAction m_Controls_Shoot;
+    private readonly InputAction m_Controls_Join;
     public struct ControlsActions
     {
         private @PlayerInputMap m_Wrapper;
@@ -333,6 +378,7 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Controls_Movement;
         public InputAction @Rotation => m_Wrapper.m_Controls_Rotation;
         public InputAction @Shoot => m_Wrapper.m_Controls_Shoot;
+        public InputAction @Join => m_Wrapper.m_Controls_Join;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -351,6 +397,9 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                 @Shoot.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnShoot;
+                @Join.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnJoin;
+                @Join.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnJoin;
+                @Join.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnJoin;
             }
             m_Wrapper.m_ControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -364,6 +413,9 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @Join.started += instance.OnJoin;
+                @Join.performed += instance.OnJoin;
+                @Join.canceled += instance.OnJoin;
             }
         }
     }
@@ -391,5 +443,6 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnRotation(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnJoin(InputAction.CallbackContext context);
     }
 }
