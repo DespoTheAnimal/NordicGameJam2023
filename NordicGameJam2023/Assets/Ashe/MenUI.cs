@@ -29,12 +29,16 @@ public class MenUI : MonoBehaviour
     GameObject _control;
     [SerializeField]
     GameObject _shop;
+    [SerializeField]
+    List<string> _playerList = new List<string>();
 
-    void Awake()
+
+    void Start()
     {
         //_RandomSpawnLocation.transform.position = new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0);
-        _amountOfPlayers = 0;
+        _amountOfPlayers = 1;
         _gameStarted = false;
+
         Instantiate(_cannon, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
         Instantiate(_shield, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
         Instantiate(_shop, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
@@ -50,6 +54,7 @@ public class MenUI : MonoBehaviour
                 AddPlayer();
             }
         }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             StartGame();
@@ -58,17 +63,16 @@ public class MenUI : MonoBehaviour
 
     void AddPlayer()
     {
-        _amountOfPlayers +=1;
-        Instantiate(_player, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
-        Debug.Log("Player spawned in AddPlayer.");
+        GameObject _playerPrefab = Instantiate(_player);
+        _playerPrefab.gameObject.name = "Player" + _amountOfPlayers;
+        _playerList.Add(new string("Player" + _amountOfPlayers));
+        _amountOfPlayers += 1;
+        Debug.Log(_amountOfPlayers);
         //Instantiate(_shield, _RandomSpawnLocation.transform.position, Quaternion.identity);
-
-        Debug.Log("Players: "+_amountOfPlayers);
 
         if (_amountOfPlayers == 4)
         {
             Instantiate(_cannon, new Vector3(Random.Range(minXRange, maxXRange), Random.Range(minYRange, maxYRange), 0), Quaternion.identity);
-            Debug.Log("Cannon spawned in AddPlayer.");
         }
     }
 
