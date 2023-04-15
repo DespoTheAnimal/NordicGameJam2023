@@ -11,6 +11,7 @@ public class MeteorScript : MonoBehaviour
     private float timer = 5f;
     private int id = 0;
     GameObject instantiatedAsteroid;
+    private int asteroidDamage = 20;
 
     public List<GameObject> instantiatedAsteroids = new List<GameObject>();
 
@@ -77,6 +78,7 @@ public class MeteorScript : MonoBehaviour
     {
         if(collision.gameObject.tag == "Asteroid")
         {
+            GetComponent<Health>().TakeDamage(asteroidDamage);
             RemoveAsteroid(collision.gameObject.name);
         }
     }
