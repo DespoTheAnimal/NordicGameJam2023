@@ -12,8 +12,7 @@ public class ParticleTester : MonoBehaviour
         ps = GetComponent<ParticleSystem>();
         MUI = GetComponent<MenUI>();
     }
-
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         foreach (string player in MUI._playerList)
         {
@@ -40,6 +39,6 @@ public class ParticleTester : MonoBehaviour
             {
                 var main = ps.main;
                 main.startColor = Color.red;
-            }*/
-    }
+            }
+    }*/
 }

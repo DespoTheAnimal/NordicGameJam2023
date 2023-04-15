@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
     private List<PlayerInput> players = new List<PlayerInput>();
 
     [SerializeField] Transform planet;
+    int amount = 0;
 
     private PlayerInputManager playerInputManager;
     // Start is called before the first frame update
@@ -28,8 +29,10 @@ public class PlayerManager : MonoBehaviour
 
     public void AddPlayer(PlayerInput player)
     {
+        amount++;
         players.Add(player);
         player.transform.SetParent(planet);
         player.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        player.gameObject.name = "Player " + amount; 
     }
 }

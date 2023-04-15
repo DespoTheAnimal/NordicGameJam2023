@@ -25,15 +25,19 @@ public class RotatingPlanet : MonoBehaviour
 
     private void RotatePlanet()
     {
+        
         Vector2 readValues = _GI.GetMovement();
         Vector3 inputValues = new Vector3(readValues.x, 0, 0);
 
-        if (inputValues.x == 1)
+        //Debug.Log(inputValues);
+
+
+        if (inputValues.x >= .95f)
         {
             Quaternion rotation = Quaternion.Euler(0,0, -1);
             planet.rotation *= rotation;
         }
-        else if(inputValues.x == -1)
+        else if(inputValues.x <= -.95f)
         {
             Quaternion rotation = Quaternion.Euler(0, 0, 1);
             planet.rotation *= rotation;
