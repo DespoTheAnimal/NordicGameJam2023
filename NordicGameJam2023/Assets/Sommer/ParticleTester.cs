@@ -4,24 +4,42 @@ using UnityEngine;
 
 public class ParticleTester : MonoBehaviour
 {
+    private MenUI MUI = new MenUI();
     private ParticleSystem ps;
-    public float hSliderValueR = 0.0F;
-    public float hSliderValueG = 0.0F;
-    public float hSliderValueB = 0.0F;
-    public float hSliderValueA = 1.0F;
-
 
     private void Awake()
     {
         ps = GetComponent<ParticleSystem>();
+        MUI = GetComponent<MenUI>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Player")
+        foreach (string player in MUI._playerList)
         {
-            var main = ps.main;
-            main.startColor = Color.red;
+            switch (player)
+            {
+                case "Player2":
+                    if (other.gameObject.name == "Player2")
+                    {
+                        var main = ps.main;
+                        main.startColor = Color.red;
+                    }
+                    break;
+
+                case "Player1":
+                    if (other.gameObject.name == "Player1")
+                    {
+                        var main = ps.main;
+                        main.startColor = Color.green;
+                    }
+                    break;
+            }
         }
+            /*if(other.gameObject.name == "Player")
+            {
+                var main = ps.main;
+                main.startColor = Color.red;
+            }*/
     }
 }
