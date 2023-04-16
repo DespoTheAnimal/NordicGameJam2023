@@ -31,8 +31,8 @@ public class PUspeedPlus : MonoBehaviour
 
         player.speedModifier += multiplier;
 
-        //GetComponent<MeshRenderer>().enabled = false;
-        //GetComponent<Collider>().enabled = false;
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<Collider>().enabled = false;
 
         yield return new WaitForSeconds(timer);
 
