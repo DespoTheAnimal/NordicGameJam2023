@@ -23,8 +23,11 @@ public class PlayerController : MonoBehaviour
         _GI = FindObjectOfType<GameInput>();
         _RB = GetComponent<Rigidbody>();
         playerEnterAndExitMechanic = GetComponent<PlayerEnterAndExitMechanic>();
+        ToggleWeapon();
     }
 
+
+    
 
     //private void HandleInteraction()
     //{
@@ -41,6 +44,32 @@ public class PlayerController : MonoBehaviour
 
     //    //EnterExit_P1
     //}
+
+    public GameObject[] weapons;
+    bool toggle = false;
+
+    public void ToggleWeapon()
+    {
+        foreach (var item in weapons)
+        {
+            item.SetActive(false);
+        }
+
+        if (toggle)
+        {
+            weapons[0].SetActive(true);
+            weapons[1].SetActive(false);
+            toggle = false;
+        }
+        else
+        {
+
+            weapons[0].SetActive(false);
+            weapons[1].SetActive(true);
+            toggle = true;
+
+        }
+    }
 
     private void HandleMovement()
     {
@@ -66,6 +95,23 @@ public class PlayerController : MonoBehaviour
     {
         if(playerMovementEnabled)
             HandleMovement();
+
+        if(isPlayerOne)
+        {
+            if (Input.GetButtonDown("EnterExit_P1"))
+            {
+                ToggleWeapon();
+            }
+        }
+        else
+        {
+            if (Input.GetButtonDown("EnterExit_P2"))
+            {
+                ToggleWeapon();
+            }
+        }
+
+        
     }
 
 

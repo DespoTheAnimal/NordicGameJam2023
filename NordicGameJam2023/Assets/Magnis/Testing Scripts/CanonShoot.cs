@@ -23,7 +23,7 @@ public class CanonShoot : MonoBehaviour
     
     private void Awake()
     {
-        playerController = GetComponent<PlayerController>();
+        playerController = GetComponentInParent<PlayerController>();
         isPlayerOne = playerController.isPlayerOne;
     }
 
