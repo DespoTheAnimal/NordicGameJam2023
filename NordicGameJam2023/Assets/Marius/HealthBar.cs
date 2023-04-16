@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+
+    //SÆTTES PÅ PLANETEN
+
     public Image healthBar;
     private float _healthAmount = 100f;
 
@@ -19,18 +22,6 @@ public class HealthBar : MonoBehaviour
         _damage = MT.asteroidDamage;
     }
 
-    /*private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            TakeDamage(20);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Heal(5);
-        }
-    }*/
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Asteroid")
@@ -52,12 +43,4 @@ public class HealthBar : MonoBehaviour
 
         healthBar.fillAmount = _healthAmount / 100f;
     }
-
-    /*private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Asteroid")
-        {
-            TakeDamage(20);
-        }
-    }*/
 }
