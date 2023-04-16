@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MenUI : MonoBehaviour
 {
@@ -73,11 +74,12 @@ public class MenUI : MonoBehaviour
             }
         }
 
+        StartGame();
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            StartGame();
+            SceneManager.LoadScene("NewFinalGameScene");
         }
-        StartGame();
     }
 
     void AddPlayer()
