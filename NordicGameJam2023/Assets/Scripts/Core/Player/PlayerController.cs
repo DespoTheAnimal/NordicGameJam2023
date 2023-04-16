@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     Vector3 readGoodValues;
 
+    public int speedModifier;
+
     private void Start()
     {
         _GI = FindObjectOfType<GameInput>();
@@ -55,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
         
 
-        int speedModifier = 5;
+        speedModifier = 5;
 
         _RB.MovePosition(transform.position + transform.TransformDirection(readGoodValues * speedModifier * Time.deltaTime));
     }
