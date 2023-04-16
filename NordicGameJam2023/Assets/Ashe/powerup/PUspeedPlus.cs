@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PUspeedPlus : MonoBehaviour
+/*public class PUspeedPlus : MonoBehaviour
 {
     public float multiplier = 3f;
     public float originalSpeed = 10.0f;
@@ -77,3 +77,4 @@ public class PUspeedPlus : MonoBehaviour
 
 
 }
+*/
