@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
         speedModifier = 5;
 
-        _RB.MovePosition(transform.position + transform.TransformDirection(readGoodValues * speedModifier * Time.deltaTime));
+        transform.Translate(readGoodValues * speedModifier * Time.deltaTime);
     }
 
     void Update()

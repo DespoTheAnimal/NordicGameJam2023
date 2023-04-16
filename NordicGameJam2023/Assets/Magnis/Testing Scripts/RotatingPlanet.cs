@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class RotatingPlanet : MonoBehaviour
 {
-    public bool rotateEnabled = false;
-    public int control;
-    public GameObject player;
 
-    [SerializeField] private Transform planet;
-    public Transform playerPositionOfTheMechanic;
+    private float rotationSpeed;
 
-    [SerializeField] GameInput _GI;
-
-    public float rotationSpeed;
-
+    public bool direction;
     //public GameObject anchor;
 
     // Start is called before the first frame update
@@ -25,30 +18,29 @@ public class RotatingPlanet : MonoBehaviour
 
     private void RotatePlanet()
     {
-        
-        Vector2 readValues = _GI.GetMovement();
-        Vector3 inputValues = new Vector3(readValues.x, 0, 0);
-
-        //Debug.Log(inputValues);
-
-
-        if (inputValues.x >= .95f)
+        if (direction)
         {
-            Quaternion rotation = Quaternion.Euler(0,0, -1);
-            planet.rotation *= rotation;
+            Quaternion rotation = Quaternion.Euler(0, 0, -1 * rotationSpeed);
+            transform.rotation *= rotation;
         }
-        else if(inputValues.x <= -.95f)
+        else
         {
-            Quaternion rotation = Quaternion.Euler(0, 0, 1);
-            planet.rotation *= rotation;
+            Quaternion rotation = Quaternion.Euler(0, 0, 1 * rotationSpeed);
+            transform.rotation *= rotation;
         }
  
+    }
+
+    public void GetValues(bool toggleDirection, float speed)
+    {
+        direction = toggleDirection;
+        rotationSpeed = speed;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(rotateEnabled)
-            RotatePlanet();
+
+        RotatePlanet();
     }
 }

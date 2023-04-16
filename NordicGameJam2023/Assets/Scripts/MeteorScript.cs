@@ -61,23 +61,18 @@ public class MeteorScript : MonoBehaviour
         }
     }
 
-
-    //void MoveAsteroids()
-    //{   
-    //    if (instantiatedAsteroids.Count > 0)
-    //    {
-    //        foreach (GameObject ass in instantiatedAsteroids)
-    //        {
-    //            Vector3 newPosition = Vector3.MoveTowards(ass.transform.position, _planet.transform.position, 2f * Time.deltaTime);
-    //            ass.transform.position = newPosition;
-    //        }
-    //    }
-    //}
+    bool direction;
+    private void ChangeDirection()
+    {
+        direction = !direction;
+        GetComponent<RotatingPlanet>().GetValues(direction, 1f);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Asteroid")
         {
+            ChangeDirection();
             GetComponent<Health>().TakeDamage(asteroidDamage);
             RemoveAsteroid(collision.gameObject.name);
         }

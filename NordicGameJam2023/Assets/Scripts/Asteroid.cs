@@ -14,21 +14,6 @@ public class Asteroid : MonoBehaviour
         meteorScript = FindObjectOfType<MeteorScript>();
     }
 
-
-
-    //void MoveAsteroids()
-    //{
-    //    if (instantiatedAsteroids.Count > 0)
-    //    {
-    //        foreach (GameObject ass in instantiatedAsteroids)
-    //        {
-    //            Vector3 newPosition = Vector3.MoveTowards(ass.transform.position, _planet.transform.position, 2f * Time.deltaTime);
-    //            ass.transform.position = newPosition;
-    //        }
-    //    }
-    //}
-
-
     private void Update()
     {
         //Vector3 newPosition = Vector3.MoveTowards(transform.position, meteorScript.transform.position, 2f * Time.deltaTime);

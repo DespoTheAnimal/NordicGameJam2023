@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.000704468, g: 0.004981964, b: 0.021329172, a: 1}
+  m_IndirectSpecularColor: {r: 0.0007044646, g: 0.0049819606, b: 0.021329168, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -515,8 +515,6 @@ MonoBehaviour:
   canonEnabled: 0
   bullet: {fileID: 186924857447335857, guid: 8198e4d9976c77a47926155c941191bc, type: 3}
   shootFrom: {fileID: 2067435778}
-  playerPositionOfTheMechanic: {fileID: 1603237804}
-  gameInput: {fileID: 0}
   projectileSpeed: 100
   destroyProjectileTime: 2
   shotDelay: 0.2
@@ -1132,13 +1130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3875e336ebb184c83509bc5d30aec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateEnabled: 0
-  control: 0
-  player: {fileID: 0}
-  planet: {fileID: 0}
-  playerPositionOfTheMechanic: {fileID: 0}
-  _GI: {fileID: 1898036449}
   rotationSpeed: 0
+  direction: 0
 --- !u!114 &665835702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1169,6 +1162,7 @@ GameObject:
   - component: {fileID: 684841242}
   - component: {fileID: 684841241}
   - component: {fileID: 684841240}
+  - component: {fileID: 684841247}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -1300,6 +1294,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &684841247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684841239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3875e336ebb184c83509bc5d30aec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1
+  direction: 0
 --- !u!1001 &748912638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1673,6 +1681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovementEnabled: 1
   isPlayerOne: 0
+  speedModifier: 0
 --- !u!114 &1071822813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2055,6 +2064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovementEnabled: 1
   isPlayerOne: 1
+  speedModifier: 0
 --- !u!114 &1397104826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2498,13 +2508,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3875e336ebb184c83509bc5d30aec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateEnabled: 0
-  control: 0
-  player: {fileID: 0}
-  planet: {fileID: 0}
-  playerPositionOfTheMechanic: {fileID: 586206261}
-  _GI: {fileID: 0}
   rotationSpeed: 0
+  direction: 0
 --- !u!114 &1970885294
 MonoBehaviour:
   m_ObjectHideFlags: 0
