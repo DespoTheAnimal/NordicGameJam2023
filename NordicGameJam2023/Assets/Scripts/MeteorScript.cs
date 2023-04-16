@@ -11,7 +11,7 @@ public class MeteorScript : MonoBehaviour
     private float timer = 5f;
     private int id = 0;
     GameObject instantiatedAsteroid;
-    private int asteroidDamage = 20;
+    public int asteroidDamage = 20;
 
     public List<GameObject> instantiatedAsteroids = new List<GameObject>();
 

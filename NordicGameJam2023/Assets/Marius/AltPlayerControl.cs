@@ -2,15 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rotating : MonoBehaviour
+public class AltPlayerControl : MonoBehaviour
 {
     public bool playerMovementEnabled = true;
-
     public bool isPlayerOne;
+    bool toggle = false;
 
     Vector3 readGoodValues;
-
     public int speedModifier;
+
+    public GameObject[] weapons;
+
+
+    private void Start()
+    {
+        /*_GI = FindObjectOfType<GameInput>();
+        _RB = GetComponent<Rigidbody>();
+        playerEnterAndExitMechanic = GetComponent<PlayerEnterAndExitMechanic>();*/
+        ToggleWeapon();
+    }
+
+    public void ToggleWeapon()
+    {
+        foreach (var item in weapons)
+        {
+            item.SetActive(false);
+        }
+
+        if (toggle)
+        {
+            weapons[0].SetActive(true);
+            weapons[1].SetActive(false);
+            toggle = false;
+        }
+        else
+        {
+
+            weapons[0].SetActive(false);
+            weapons[1].SetActive(true);
+            toggle = true;
+
+        }
+    }
 
     private void HandleMovement()
     {
@@ -32,7 +65,27 @@ public class Rotating : MonoBehaviour
     void FixedUpdate()
     {
         if (playerMovementEnabled)
+        {
             HandleMovement();
+        }
+    }
+
+    private void Update()
+    {
+        if (isPlayerOne)
+        {
+            if (Input.GetButtonDown("EnterExit_P1"))
+            {
+                ToggleWeapon();
+            }
+        }
+        else
+        {
+            if (Input.GetButtonDown("EnterExit_P2"))
+            {
+                ToggleWeapon();
+            }
+        }
     }
 
     /*[SerializeField] GameInput _GI;
