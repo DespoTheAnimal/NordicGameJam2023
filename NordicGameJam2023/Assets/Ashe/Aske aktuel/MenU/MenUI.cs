@@ -21,32 +21,36 @@ public class MenUI : MonoBehaviour
     GameObject _player;
     [SerializeField]
     GameObject _player2;
-    [SerializeField]
-    GameObject _cannon;
-    [SerializeField]
-    GameObject _shield;
+    //[SerializeField]
+    //GameObject _cannon;
+    //[SerializeField]
+    //GameObject _shield;
     [SerializeField]
     GameObject _startMenu;
-    [SerializeField]
-    GameObject _control;
-    [SerializeField]
-    GameObject _shop;
-    [SerializeField]
-    GameObject _startPortal;
+    //[SerializeField]
+    //GameObject _control;
+    //[SerializeField]
+    //GameObject _shop;
+    //[SerializeField]
+    //GameObject _startPortal;
     [SerializeField]
     public List<string> _playerList = new List<string>();
     [SerializeField]
     List<GameObject> _portalList = new List<GameObject>();
+    [SerializeField]
     public int activePortals;
     //bool colliding;
+
+    [SerializeField]
+    MeteorScript MS;
 
     public portal0 p0 = new portal0();
     public portal1 p1 = new portal1();
 
     private void Awake()
     {
-        p0 = GetComponent<portal0>();
-        p1 = GetComponent<portal1>();
+        //p0 = GetComponent<portal0>();
+        //p1 = GetComponent<portal1>();
         p0 = FindObjectOfType<portal0>();
         p1 = FindObjectOfType<portal1>();
     }
@@ -58,9 +62,6 @@ public class MenUI : MonoBehaviour
         _gameStarted = false;
         //colliding = false;
         activePortals = 0;
-
-        _portalList[0].SetActive(false);
-        _portalList[1].SetActive(false);
     }
     void Update()
     {
@@ -121,6 +122,7 @@ public class MenUI : MonoBehaviour
                 _gameStarted = true;
                 _portalList[0].SetActive(false);
                 _portalList[1].SetActive(false);
+                MS.enabled = true;
             }
         }
     }

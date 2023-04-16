@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class portal0 : MonoBehaviour
+public class portal1 : MonoBehaviour
 {
-    public bool collisionPortal0 = false;
+    public bool collisionPortal1 = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,17 +19,17 @@ public class portal0 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Player0")
+        if (other.gameObject.name == "Player 2")
         {
-            collisionPortal0 = true;
-            Debug.Log("collide0");
+            collisionPortal1 = true;
+            Debug.Log("collide1");
         }
         else
-        { collisionPortal0 = false; }
+        { collisionPortal1 = false; }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        collisionPortal0 = false;
+        collisionPortal1 = false;
     }
 }

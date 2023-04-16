@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 6610510260882599852}
   - component: {fileID: 3069123472290443008}
   - component: {fileID: 3468882269221252524}
-  - component: {fileID: 1705080612232364882}
+  - component: {fileID: 4246280295242006219}
+  - component: {fileID: 3806904548207747658}
   m_Layer: 0
-  m_Name: BallSizeUp
+  m_Name: SpeedPlus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1705080612232364882
+--- !u!65 &4246280295242006219
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,8 +93,25 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209550089455400453}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3806904548207747658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209550089455400453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d2159e1f1c23c84c9eefc944c2fcfcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplier: 3
+  originalSpeed: 10
+  Player: {fileID: 0}
+  Player2: {fileID: 0}
+  timer: 5
