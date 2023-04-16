@@ -290,6 +290,7 @@ MonoBehaviour:
   projectileSpeed: 10
   destroyProjectileTime: 2
   shotDelay: 0.3
+  muzzleFlash: {fileID: 0}
 --- !u!1001 &248734055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1345,6 +1346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spherePrefab: {fileID: 3019770686104044862, guid: a628209c7d1d7e842bbdae3b192278b3, type: 3}
   _planet: {fileID: 665835695}
+  asteroidDamage: 20
   instantiatedAsteroids: []
   asteroidCollisionVFX: {fileID: 0}
 --- !u!1 &684841239
@@ -1383,6 +1385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  healthBar: {fileID: 0}
 --- !u!114 &684841241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1397,6 +1400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spherePrefab: {fileID: 3019770686104044862, guid: a628209c7d1d7e842bbdae3b192278b3, type: 3}
   _planet: {fileID: 665835695}
+  asteroidDamage: 20
   instantiatedAsteroids: []
   asteroidCollisionVFX: {fileID: 602489629509172455, guid: a5642ce7322519d4d9fe3c8a10f5c914, type: 3}
 --- !u!114 &684841242
@@ -2062,6 +2066,10 @@ MonoBehaviour:
   weapons:
   - {fileID: 1765577128}
   - {fileID: 160329407}
+  weaponToggle: {fileID: 0}
+  weaponToggleFXTransform: {fileID: 0}
+  idle: {fileID: 0}
+  move: {fileID: 0}
 --- !u!114 &1071822813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2593,6 +2601,10 @@ MonoBehaviour:
   weapons:
   - {fileID: 50951167}
   - {fileID: 1563704160}
+  weaponToggle: {fileID: 0}
+  weaponToggleFXTransform: {fileID: 0}
+  idle: {fileID: 0}
+  move: {fileID: 0}
 --- !u!114 &1397104826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2814,6 +2826,7 @@ MonoBehaviour:
   projectileSpeed: 10
   destroyProjectileTime: 2
   shotDelay: 0.3
+  muzzleFlash: {fileID: 0}
 --- !u!1 &1634798693 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2729753053915211466, guid: dccf975122a7f5e4cb8ace8ec9fc8ff2, type: 3}
