@@ -33,8 +33,8 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
 
-    private void FollowTarget()
+    /*private void FollowTarget()
     {
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, enemySpeed);
-    }
+    }*/
 }
