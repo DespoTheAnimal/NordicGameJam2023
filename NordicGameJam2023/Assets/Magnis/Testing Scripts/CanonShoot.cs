@@ -69,9 +69,11 @@ public class CanonShoot : MonoBehaviour
         yield return new WaitForSeconds(shotDelay);
         isShooting = false;
     }
-
+    [SerializeField] private GameObject muzzleFlash;
     private void Shoot()
     {
+        GameObject clone = Instantiate(muzzleFlash, shootFrom.transform.position, shootFrom.transform.rotation);
+
         GameObject temporaryBulletHandler;
         temporaryBulletHandler = Instantiate(bullet, shootFrom.transform.position, shootFrom.transform.rotation) as GameObject;
 

@@ -47,9 +47,12 @@ public class PlayerController : MonoBehaviour
 
     public GameObject[] weapons;
     bool toggle = false;
+    [SerializeField] private GameObject weaponToggle;
+    [SerializeField] private Transform weaponToggleFXTransform;
 
     public void ToggleWeapon()
     {
+        GameObject clone = Instantiate(weaponToggle, weaponToggleFXTransform.position, Quaternion.identity);
         foreach (var item in weapons)
         {
             item.SetActive(false);
@@ -67,7 +70,6 @@ public class PlayerController : MonoBehaviour
             weapons[0].SetActive(false);
             weapons[1].SetActive(true);
             toggle = true;
-
         }
     }
 
