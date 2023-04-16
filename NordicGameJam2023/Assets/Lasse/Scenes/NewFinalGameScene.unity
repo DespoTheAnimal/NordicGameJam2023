@@ -1149,6 +1149,7 @@ MonoBehaviour:
   _spherePrefab: {fileID: 3019770686104044862, guid: a628209c7d1d7e842bbdae3b192278b3, type: 3}
   _planet: {fileID: 665835695}
   instantiatedAsteroids: []
+  asteroidCollisionVFX: {fileID: 0}
 --- !u!1 &684841239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,6 +1201,7 @@ MonoBehaviour:
   _spherePrefab: {fileID: 3019770686104044862, guid: a628209c7d1d7e842bbdae3b192278b3, type: 3}
   _planet: {fileID: 665835695}
   instantiatedAsteroids: []
+  asteroidCollisionVFX: {fileID: 602489629509172455, guid: a5642ce7322519d4d9fe3c8a10f5c914, type: 3}
 --- !u!114 &684841242
 MonoBehaviour:
   m_ObjectHideFlags: 0

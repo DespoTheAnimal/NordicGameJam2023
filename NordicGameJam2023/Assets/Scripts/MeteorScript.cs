@@ -68,12 +68,15 @@ public class MeteorScript : MonoBehaviour
         GetComponent<RotatingPlanet>().GetValues(direction, 1f);
     }
 
+    [SerializeField] private GameObject asteroidCollisionVFX;
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Asteroid")
         {
             ChangeDirection();
             GetComponent<Health>().TakeDamage(asteroidDamage);
+            GameObject clone = Instantiate(asteroidCollisionVFX, collision.transform.position, Quaternion.identity);
             RemoveAsteroid(collision.gameObject.name);
         }
     }
