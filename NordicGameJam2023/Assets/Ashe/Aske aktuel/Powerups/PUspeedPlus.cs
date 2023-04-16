@@ -18,31 +18,32 @@ public class PUspeedPlus : MonoBehaviour
         if (other.GetComponent<PlayerController>())
         {
             Player = other.GetComponent<PlayerController>();
-            StartCoroutine(Pickup(Player));
+            Player.PICKUP(10);
+            Destroy(gameObject);
             Debug.Log("collide");
         }
     }
 
 
-    IEnumerator Pickup(PlayerController player)
-    {
-        //Instantiate(pickupEffect, transform.position, transform.rotation);
+    //IEnumerator Pickup(PlayerController player)
+    //{
+    //    //Instantiate(pickupEffect, transform.position, transform.rotation);
 
 
-        player.speedModifier += multiplier;
+    //    player.speedModifier += multiplier;
 
-        GetComponent<MeshRenderer>().enabled = false;
-        GetComponent<Collider>().enabled = false;
+    //    GetComponent<MeshRenderer>().enabled = false;
+    //    GetComponent<Collider>().enabled = false;
 
-        yield return new WaitForSeconds(timer);
-
-
-        player.speedModifier = originalSpeed;
+    //    yield return new WaitForSeconds(timer);
 
 
-        Destroy(gameObject);
+    //    player.speedModifier = originalSpeed;
 
-    }
+
+    //    Destroy(gameObject);
+
+    //}
     //IEnumerator Pickup2(Collider other)
     //{
     //    //Instantiate(pickupEffect, transform.position, transform.rotation);

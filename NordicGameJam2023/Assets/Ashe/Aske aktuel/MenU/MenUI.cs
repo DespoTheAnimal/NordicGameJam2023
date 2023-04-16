@@ -125,13 +125,12 @@ public class MenUI : MonoBehaviour
                 _gameStarted = true;
                 _portalList[0].SetActive(false);
                 _portalList[1].SetActive(false);
-<<<<<<< Updated upstream
+
                 if(MS!=null)
                     MS.enabled = true;
-=======
-                MS.enabled = true;
-                PUs.enabled = true;
->>>>>>> Stashed changes
+
+              
+
             }
         }
     }

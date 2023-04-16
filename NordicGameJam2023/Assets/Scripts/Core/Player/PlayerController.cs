@@ -52,6 +52,31 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject weaponToggle;
     [SerializeField] private Transform weaponToggleFXTransform;
 
+    public void PICKUP(int multijuice)
+    {
+        StartCoroutine(Pickup(multijuice));
+    }
+
+    public IEnumerator Pickup(int multiplier)
+    {
+        //Instantiate(pickupEffect, transform.position, transform.rotation);
+
+
+        speedModifier += multiplier;
+
+        //GetComponent<MeshRenderer>().enabled = false;
+        //GetComponent<Collider>().enabled = false;
+
+        yield return new WaitForSeconds(2f);
+
+
+        speedModifier = 10;
+
+
+        
+
+    }
+
     public void ToggleWeapon()
     {
         GameObject clone = Instantiate(weaponToggle, weaponToggleFXTransform.position, Quaternion.identity);
