@@ -24,7 +24,7 @@ public class MeteorScript : MonoBehaviour
             SpawnSphereOnEdgeRandomly3D();
             timer = 2;
         }
-        MoveAsteroids();
+        //MoveAsteroids();
 
     }
     private void SpawnSphereOnEdgeRandomly3D()
@@ -62,17 +62,17 @@ public class MeteorScript : MonoBehaviour
     }
 
 
-    void MoveAsteroids()
-    {   
-        if (instantiatedAsteroids.Count > 0)
-        {
-            foreach (GameObject ass in instantiatedAsteroids)
-            {
-                Vector3 newPosition = Vector3.MoveTowards(ass.transform.position, _planet.transform.position, 2f * Time.deltaTime);
-                ass.transform.position = newPosition;
-            }
-        }
-    }
+    //void MoveAsteroids()
+    //{   
+    //    if (instantiatedAsteroids.Count > 0)
+    //    {
+    //        foreach (GameObject ass in instantiatedAsteroids)
+    //        {
+    //            Vector3 newPosition = Vector3.MoveTowards(ass.transform.position, _planet.transform.position, 2f * Time.deltaTime);
+    //            ass.transform.position = newPosition;
+    //        }
+    //    }
+    //}
 
     private void OnCollisionEnter(Collision collision)
     {

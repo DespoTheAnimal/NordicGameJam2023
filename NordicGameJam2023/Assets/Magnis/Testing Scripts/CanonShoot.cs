@@ -6,17 +6,28 @@ using UnityEngine.InputSystem;
 
 public class CanonShoot : MonoBehaviour
 {
+    private PlayerController playerController;
+
     public bool canonEnabled = false;
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject shootFrom;
-    public Transform playerPositionOfTheMechanic;
 
-    [SerializeField] private GameInput gameInput;
+    private bool isPlayerOne;
+
 
     public int projectileSpeed = 10;
     public int destroyProjectileTime = 2;
     public float shotDelay = 2;
     private bool isShooting = false;
+    
+    
+    private void Awake()
+    {
+        playerController = GetComponent<PlayerController>();
+        isPlayerOne = playerController.isPlayerOne;
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,67 +37,27 @@ public class CanonShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Shoot_P1") && p1)
+        if(isPlayerOne)
         {
-            if (isShooting == false)
+            if (Input.GetButtonDown("Shoot_P1")) // and if have ammo
             {
-                StartCoroutine(ShootDelay());
-            }
-        }
-
-        if (Input.GetButtonDown("Shoot_P2") && p2)
-        {
-            if (isShooting == false)
-            {
-                StartCoroutine(ShootDelay());
-            }
-        }
-    }
-
-    private bool p1 = false;
-    private bool p2 = false;
-
-
-    public void EnableCanon(bool state, bool isPlayerOne)
-    {
-        if(state)
-        {
-            if(isPlayerOne)
-            {
-                p1 = true;
-                p2 = false;
-            }
-            else
-            {
-                p1 = false;
-                p2 = true;
+                if (isShooting == false)
+                {
+                    StartCoroutine(ShootDelay());
+                }
             }
         }
         else
         {
-            p1 = false;
-            p2 = false;
+            if (Input.GetButtonDown("Shoot_P2"))
+            {
+                if (isShooting == false)
+                {
+                    StartCoroutine(ShootDelay());
+                }
+            }
         }
 
-        //if(state)
-        //{
-        //    gameInput.PlayerInput.Controls.Shoot.performed += GameInput_Shoot;
-        //}
-        //else
-        //{
-        //    gameInput.PlayerInput.Controls.Shoot.performed -= GameInput_Shoot;
-        //}
-
-        //if (isPlayerOne)
-        //{
-        //    float x = Input.GetAxis("Horizontal_P1");
-        //    readGoodValues = new Vector3(x, 0, 0);
-        //}
-        //else
-        //{
-        //    float x = Input.GetAxis("Horizontal_P2");
-        //    readGoodValues = new Vector3(x, 0, 0);
-        //}
     }
 
 
@@ -107,7 +78,7 @@ public class CanonShoot : MonoBehaviour
         Rigidbody temporaryRB;
         temporaryRB = temporaryBulletHandler.GetComponent<Rigidbody>();
 
-        temporaryRB.AddForce(transform.right * projectileSpeed);
+        temporaryRB.AddForce(transform.up * projectileSpeed);
 
         Destroy(temporaryBulletHandler, destroyProjectileTime);
     }

@@ -76,7 +76,6 @@ public class PlayerEnterAndExitMechanic : MonoBehaviour
         canonShoot = FindObjectOfType<CanonShoot>();
         rotatingPlanet = FindObjectOfType<RotatingPlanet>();
         planet = FindObjectOfType<FauxGravityAttractor>().gameObject.transform;
-        playerPositionOfTheMechanic = GameObject.FindGameObjectWithTag("PlanetRotateChild").transform;
     }
 
     private void Start()
@@ -96,7 +95,7 @@ public class PlayerEnterAndExitMechanic : MonoBehaviour
                 playeController.playerMovementEnabled = false;
                 //playeController.transform.position = canonShoot.playerPositionOfTheMechanic.position;
 
-                canonShoot.EnableCanon(true, true);
+                //canonShoot.EnableCanon(true, true);
                 // enable canon
                 hasEntered = true;
                 mechanicState = MechanicState.Canon;
@@ -113,7 +112,7 @@ public class PlayerEnterAndExitMechanic : MonoBehaviour
             }
             else if (hasEntered)
             {
-                canonShoot.EnableCanon(false, true);
+                //canonShoot.EnableCanon(false, true);
                 rotateEnabled = false;
 
                 playeController.playerMovementEnabled = true;
@@ -129,7 +128,7 @@ public class PlayerEnterAndExitMechanic : MonoBehaviour
                 playeController.playerMovementEnabled = false;
                 //playeController.transform.position = canonShoot.playerPositionOfTheMechanic.position;
 
-                canonShoot.EnableCanon(true, false);
+                //canonShoot.EnableCanon(true, false);
                 // enable canon
                 hasEntered = true;
                 mechanicState = MechanicState.Canon;
@@ -146,7 +145,7 @@ public class PlayerEnterAndExitMechanic : MonoBehaviour
             }
             else if (hasEntered)
             {
-                canonShoot.EnableCanon(false, false);
+                //canonShoot.EnableCanon(false, false);
                 rotateEnabled = false;
 
                 playeController.playerMovementEnabled = true;

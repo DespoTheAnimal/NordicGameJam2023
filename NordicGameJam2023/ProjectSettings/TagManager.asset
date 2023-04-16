@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Asteroid
+  - PlanetRotateChild
+  - Mechanic
+  - Cannonball
   layers:
   - Default
   - TransparentFX
@@ -12,8 +15,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Asteroid
   - 
   - 
   - 

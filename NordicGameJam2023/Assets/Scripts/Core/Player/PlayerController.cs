@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public bool playerMovementEnabled = true;
 
-    [SerializeField] bool isPlayerOne;
+    public bool isPlayerOne;
 
     private Rigidbody _RB;
 
