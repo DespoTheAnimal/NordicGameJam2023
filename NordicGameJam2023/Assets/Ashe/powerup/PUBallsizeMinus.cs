@@ -10,7 +10,6 @@ public class PUBallsizeMinus : MonoBehaviour
     public GameObject pickupEffect;
 
     public GameObject Bolder_Player1;
-    public GameObject Bolder_Player2;
 
     public int timer = 5;
 
