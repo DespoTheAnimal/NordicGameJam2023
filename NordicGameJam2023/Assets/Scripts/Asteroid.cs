@@ -5,14 +5,17 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 {
     private MeteorScript meteorScript;
+    public CameraShake cameraShake;
 
-
+    public float assSpeed = 2;
 
 
     private void Start()
     {
         meteorScript = FindObjectOfType<MeteorScript>();
+        cameraShake = FindObjectOfType<CameraShake>();
     }
+
 
     private void Update()
     {
@@ -20,12 +23,12 @@ public class Asteroid : MonoBehaviour
        
         if(Input.GetKeyDown(KeyCode.H))
         {
-            Vector3 newPosition = Vector3.MoveTowards(transform.position, meteorScript.transform.position, 2f * Time.deltaTime * -1);
+            Vector3 newPosition = Vector3.MoveTowards(transform.position, meteorScript.transform.position, assSpeed * Time.deltaTime * -1);
             transform.position = newPosition;
         }
         else
         {
-            Vector3 newPosition = Vector3.MoveTowards(transform.position, meteorScript.transform.position, 2f * Time.deltaTime);
+            Vector3 newPosition = Vector3.MoveTowards(transform.position, meteorScript.transform.position, assSpeed * Time.deltaTime);
             transform.position = newPosition;
         }
 
@@ -40,11 +43,13 @@ public class Asteroid : MonoBehaviour
     {
         if (collision.gameObject.tag == "Cannonball")
         {
+            cameraShake.ShakeItUp();
             GameObject clone = Instantiate(cannonCollision, transform.position, transform.rotation);
             meteorScript.RemoveAsteroid(this.name);
         }
         else if (collision.gameObject.tag == "Shield")
         {
+            cameraShake.ShakeItUp();
             GameObject clone = Instantiate(shieldCollision, transform.position, transform.rotation);
             // Calculate Angle Between the collision point and the player
             Vector3 dir = collision.contacts[0].point - transform.position;

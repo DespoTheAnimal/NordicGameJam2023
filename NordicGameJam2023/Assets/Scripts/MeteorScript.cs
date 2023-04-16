@@ -13,11 +13,21 @@ public class MeteorScript : MonoBehaviour
     GameObject instantiatedAsteroid;
     public int asteroidDamage = 20;
 
+    private float timer4ChangeAssSpeed = 10f;
+    private float assSpeed = 2f;
+
     public List<GameObject> instantiatedAsteroids = new List<GameObject>();
 
     // Update is called once per frame
     void Update()
     {
+        timer4ChangeAssSpeed -= Time.deltaTime;
+        if (timer4ChangeAssSpeed <= 0)
+        {
+            assSpeed++;
+            timer4ChangeAssSpeed = 10f;
+        }
+
         timer -= Time.deltaTime;
         if(timer <= 0)
         {
@@ -44,6 +54,7 @@ public class MeteorScript : MonoBehaviour
         randomPos.y = Mathf.Sin(dotProductAngle * (Random.value > 0.5f ? 1f : -1f)) * radius + transform.position.y;
 
         instantiatedAsteroid = Instantiate(_spherePrefab, randomPos, Quaternion.identity);
+        instantiatedAsteroid.GetComponent<Asteroid>().assSpeed = assSpeed;
         instantiatedAsteroid.name = "Asteroid " + id;
         id++;
         instantiatedAsteroids.Add(instantiatedAsteroid);

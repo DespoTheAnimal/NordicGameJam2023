@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Lasse/Scenes/NewFinalGameScene.unity
+    guid: 470b4acceb5c9a549a39dae9f450e2ca
   m_configObjects: {}
