@@ -67,7 +67,7 @@ public class CanonShoot : MonoBehaviour
     private IEnumerator ShootDelay()
     {
         isShooting = true;
-        animator.SetTrigger("isTrigger");
+        animator.SetTrigger("isShooting");
         Shoot();
         yield return new WaitForSeconds(shotDelay);
         isShooting = false;

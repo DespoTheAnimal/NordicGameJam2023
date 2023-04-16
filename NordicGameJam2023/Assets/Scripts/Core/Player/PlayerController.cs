@@ -22,8 +22,10 @@ public class PlayerController : MonoBehaviour
     {
         _GI = FindObjectOfType<GameInput>();
         _RB = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         playerEnterAndExitMechanic = GetComponent<PlayerEnterAndExitMechanic>();
         ToggleWeapon();
+        speedModifier = 5;
     }
 
 
@@ -73,22 +75,37 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    AudioSource audioSource;
+    [SerializeField] private AudioClip idle, move;
+
     private void HandleMovement()
     {
+        float movement;
         if (isPlayerOne)
         {
             float x = Input.GetAxis("Horizontal_P1");
+            movement = x;
             readGoodValues = new Vector3(x, 0, 0);
         }
         else
         {
             float x = Input.GetAxis("Horizontal_P2");
+            movement = x;
             readGoodValues = new Vector3(x, 0, 0);
         }
 
-        
+        //if(movement > 0.05f)
+        //{
+        //    audioSource.clip = move;
+        //}
+        //else
+        //{
+        //    audioSource.clip = idle;
+        //}
 
-        speedModifier = 5;
+        //audioSource.Play();
+
+        
 
         transform.Translate(readGoodValues * speedModifier * Time.deltaTime);
     }
