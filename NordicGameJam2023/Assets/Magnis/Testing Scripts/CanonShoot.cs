@@ -11,6 +11,7 @@ public class CanonShoot : MonoBehaviour
     public bool canonEnabled = false;
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject shootFrom;
+    [SerializeField] private Animator animator;
 
     private bool isPlayerOne;
 
@@ -20,6 +21,7 @@ public class CanonShoot : MonoBehaviour
     public float shotDelay = 2;
     private bool isShooting = false;
     
+
     
     private void Awake()
     {
@@ -65,6 +67,7 @@ public class CanonShoot : MonoBehaviour
     private IEnumerator ShootDelay()
     {
         isShooting = true;
+        animator.SetTrigger("isTrigger");
         Shoot();
         yield return new WaitForSeconds(shotDelay);
         isShooting = false;

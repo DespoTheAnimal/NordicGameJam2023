@@ -142,8 +142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2139be266dfd5994dbc6ff66d8f9ae65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canonEnabled: 0
   bullet: {fileID: 186924857447335857, guid: 8198e4d9976c77a47926155c941191bc, type: 3}
   shootFrom: {fileID: 1181027654436966003}
-  gameInput: {fileID: 0}
+  animator: {fileID: 6681011579149694996, guid: 768e548fc50ec7e4899acb56697efd82, type: 3}
   projectileSpeed: 100
   destroyProjectileTime: 2
+  shotDelay: 2
