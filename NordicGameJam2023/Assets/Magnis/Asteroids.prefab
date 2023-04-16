@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d988d5cfc5dc084c90d26d47e7d6731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shieldCollision: {fileID: 602489629509172455, guid: f1b0fb59c0eb1994d873736cc7e83b3a, type: 3}
+  cannonCollision: {fileID: 602489629509172455, guid: a5642ce7322519d4d9fe3c8a10f5c914, type: 3}
 --- !u!114 &5342242873973090612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,5 +143,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 500
-  enemySpeed: 0
-  target: {fileID: 0}

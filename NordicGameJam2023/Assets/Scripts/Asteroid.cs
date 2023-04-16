@@ -33,16 +33,19 @@ public class Asteroid : MonoBehaviour
         //transform.position = newPosition;
     }
 
+    [SerializeField] private GameObject shieldCollision;
+    [SerializeField] private GameObject cannonCollision;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Cannonball")
         {
+            GameObject clone = Instantiate(cannonCollision, transform.position, transform.rotation);
             meteorScript.RemoveAsteroid(this.name);
         }
         else if (collision.gameObject.tag == "Shield")
         {
-
+            GameObject clone = Instantiate(shieldCollision, transform.position, transform.rotation);
             // Calculate Angle Between the collision point and the player
             Vector3 dir = collision.contacts[0].point - transform.position;
 

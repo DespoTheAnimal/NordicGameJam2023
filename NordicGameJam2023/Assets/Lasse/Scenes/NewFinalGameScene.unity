@@ -1390,6 +1390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spherePrefab: {fileID: 3019770686104044862, guid: a628209c7d1d7e842bbdae3b192278b3, type: 3}
   _planet: {fileID: 665835695}
+  asteroidDamage: 20
   instantiatedAsteroids: []
   asteroidCollisionVFX: {fileID: 0}
 --- !u!1 &684841239
@@ -1442,6 +1443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spherePrefab: {fileID: 3019770686104044862, guid: a628209c7d1d7e842bbdae3b192278b3, type: 3}
   _planet: {fileID: 665835695}
+  asteroidDamage: 20
   instantiatedAsteroids: []
   asteroidCollisionVFX: {fileID: 602489629509172455, guid: a5642ce7322519d4d9fe3c8a10f5c914, type: 3}
 --- !u!114 &684841242
@@ -1933,7 +1935,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b9a60660577b21d4c9c81745af396bca, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.151
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1977,7 +1979,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2408,7 +2410,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b9a60660577b21d4c9c81745af396bca, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.151
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2452,7 +2454,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
