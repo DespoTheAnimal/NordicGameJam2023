@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6164289696228736856}
   m_Layer: 0
   m_Name: Player 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,6 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovementEnabled: 1
   isPlayerOne: 1
+  speedModifier: 0
+  weapons: []
 --- !u!54 &2868439905320682958
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -157,5 +159,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0ec589b9ef1d34e8b6c34eac6dab2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mechanicState: 0
   isPlayerOne: 1
   canEnter: 0
+  rotateEnabled: 0
+  planet: {fileID: 0}
+  playerPositionOfTheMechanic: {fileID: 0}
+  planetRotationSpeed: 0.3
