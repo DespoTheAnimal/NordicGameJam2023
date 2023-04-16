@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using TMPro;
 using UnityEngine.InputSystem;
 
 public class CanonShoot : MonoBehaviour
@@ -14,6 +15,7 @@ public class CanonShoot : MonoBehaviour
     [SerializeField] private Animator animator;
 
     private bool isPlayerOne;
+
 
 
     public int projectileSpeed = 10;
@@ -79,6 +81,15 @@ public class CanonShoot : MonoBehaviour
 
         GameObject temporaryBulletHandler;
         temporaryBulletHandler = Instantiate(bullet, shootFrom.transform.position, shootFrom.transform.rotation) as GameObject;
+
+        if(isPlayerOne)
+        {
+            temporaryBulletHandler.name = "P1";
+        }
+        else
+        {
+            temporaryBulletHandler.name = "P2";
+        }
 
         Rigidbody temporaryRB;
         temporaryRB = temporaryBulletHandler.GetComponent<Rigidbody>();

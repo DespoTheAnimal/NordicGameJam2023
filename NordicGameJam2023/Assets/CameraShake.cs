@@ -6,7 +6,7 @@ public class CameraShake : MonoBehaviour
 
     public void ShakeItUp()
     {
-        StartCoroutine(Shake(2f, 2f));
+        StartCoroutine(Shake(.7f, .2f));
     }
 
     public IEnumerator Shake(float duration, float magnitude)
@@ -17,9 +17,9 @@ public class CameraShake : MonoBehaviour
         while (elapsed < duration)
         {
             float x = UnityEngine.Random.Range(-1f, 1f) * magnitude;
-            float y = UnityEngine.Random.Range(-1f, 1f) * magnitude;
+            //float y = UnityEngine.Random.Range(-1f, 1f) * magnitude;
 
-            transform.position = new Vector3(x, y, -10f);
+            transform.position = new Vector3(x, transform.position.y, transform.position.z);
             elapsed += Time.deltaTime;
             yield return 0;
         }

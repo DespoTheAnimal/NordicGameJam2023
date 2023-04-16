@@ -18,6 +18,11 @@ public class MeteorScript : MonoBehaviour
 
     public List<GameObject> instantiatedAsteroids = new List<GameObject>();
 
+    private void Start()
+    {
+        cameraShake = FindObjectOfType<CameraShake>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -80,11 +85,13 @@ public class MeteorScript : MonoBehaviour
     }
 
     [SerializeField] private GameObject asteroidCollisionVFX;
+    private CameraShake cameraShake;
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Asteroid")
         {
+            cameraShake.ShakeItUp();
             ChangeDirection();
             GetComponent<Health>().TakeDamage(asteroidDamage);
             GameObject clone = Instantiate(asteroidCollisionVFX, collision.transform.position, Quaternion.identity);

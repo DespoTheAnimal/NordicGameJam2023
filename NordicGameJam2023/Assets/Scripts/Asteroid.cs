@@ -9,18 +9,24 @@ public class Asteroid : MonoBehaviour
 
     public float assSpeed = 2;
 
+    public bool isPlayer1Bullet;
+
+    ScoreManager scoreManager;
+
 
     private void Start()
     {
         meteorScript = FindObjectOfType<MeteorScript>();
         cameraShake = FindObjectOfType<CameraShake>();
+        scoreManager = FindObjectOfType<ScoreManager>();
     }
 
 
     private void Update()
     {
         //Vector3 newPosition = Vector3.MoveTowards(transform.position, meteorScript.transform.position, 2f * Time.deltaTime);
-       
+        if (!meteorScript) return;
+
         if(Input.GetKeyDown(KeyCode.H))
         {
             Vector3 newPosition = Vector3.MoveTowards(transform.position, meteorScript.transform.position, assSpeed * Time.deltaTime * -1);
@@ -43,6 +49,14 @@ public class Asteroid : MonoBehaviour
     {
         if (collision.gameObject.tag == "Cannonball")
         {
+            if(collision.gameObject.name == "P1")
+            {
+                scoreManager.AddPlayerKills(true);
+            }
+            else if(collision.gameObject.name == "P2")
+            {
+                scoreManager.AddPlayerKills(false);
+            }
             cameraShake.ShakeItUp();
             GameObject clone = Instantiate(cannonCollision, transform.position, transform.rotation);
             meteorScript.RemoveAsteroid(this.name);
