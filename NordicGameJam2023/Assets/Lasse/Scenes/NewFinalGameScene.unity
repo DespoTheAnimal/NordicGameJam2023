@@ -1133,13 +1133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3875e336ebb184c83509bc5d30aec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateEnabled: 0
-  control: 0
-  player: {fileID: 0}
-  planet: {fileID: 0}
-  playerPositionOfTheMechanic: {fileID: 0}
-  _GI: {fileID: 1898036449}
-  rotationSpeed: 0
+  direction: 0
 --- !u!114 &665835702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1170,6 +1164,7 @@ GameObject:
   - component: {fileID: 684841242}
   - component: {fileID: 684841241}
   - component: {fileID: 684841240}
+  - component: {fileID: 684841247}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -1299,6 +1294,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &684841247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684841239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3875e336ebb184c83509bc5d30aec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 0
 --- !u!1001 &748912638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1600,7 +1608,6 @@ GameObject:
   - component: {fileID: 1071822813}
   - component: {fileID: 1071822812}
   - component: {fileID: 1071822811}
-  - component: {fileID: 1071822817}
   m_Layer: 6
   m_Name: Player 2
   m_TagString: Untagged
@@ -1655,6 +1662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovementEnabled: 1
   isPlayerOne: 0
+  speedModifier: 0
   weapons:
   - {fileID: 1765577128}
   - {fileID: 160329407}
@@ -1735,24 +1743,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071822808}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1071822817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071822808}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2139be266dfd5994dbc6ff66d8f9ae65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canonEnabled: 0
-  bullet: {fileID: 186924857447335857, guid: 54cf41c6cb8f0474fac3bdc1f38ea892, type: 3}
-  shootFrom: {fileID: 2063530372}
-  projectileSpeed: 10
-  destroyProjectileTime: 2
-  shotDelay: 0.3
 --- !u!4 &1135777812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 521598789694894071, guid: 85953a4f0ed8188478ffd64f116cc542, type: 3}
@@ -2061,7 +2051,6 @@ GameObject:
   - component: {fileID: 1397104826}
   - component: {fileID: 1397104825}
   - component: {fileID: 1397104824}
-  - component: {fileID: 1397104830}
   m_Layer: 6
   m_Name: Player 1
   m_TagString: Untagged
@@ -2116,6 +2105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovementEnabled: 1
   isPlayerOne: 1
+  speedModifier: 0
   weapons:
   - {fileID: 50951167}
   - {fileID: 1563704160}
@@ -2196,24 +2186,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397104821}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1397104830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1397104821}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2139be266dfd5994dbc6ff66d8f9ae65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canonEnabled: 0
-  bullet: {fileID: 186924857447335857, guid: 54cf41c6cb8f0474fac3bdc1f38ea892, type: 3}
-  shootFrom: {fileID: 1981490057}
-  projectileSpeed: 10
-  destroyProjectileTime: 2
-  shotDelay: 0.3
 --- !u!1001 &1482617705
 PrefabInstance:
   m_ObjectHideFlags: 0
